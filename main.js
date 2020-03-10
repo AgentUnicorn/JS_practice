@@ -22,6 +22,20 @@ let check = function(character) {
 filter3 = inventors.filter(check);
 console.log("Result of filter3:", filter3);
 
+// filter 3 (Bitna)
+
+inventors.filter((name) => {
+  let splitName = inventors.split('');
+  let isDuplicate = false;
+  splitName.map((_,i) => {
+    if (splitName[i] === splitName[i+1]) {
+      isDuplicate = true;
+    }
+    return isDuplicate
+  })
+  return isDuplicate
+})
+
 //filter 4
 let filter4 = [];
 filter4 = numbers.filter((number) => number % 2 == 1);
@@ -70,6 +84,16 @@ let printInitial = function(name) {
 map4 = inventors.map((name) => name.split('').filter(printInitial).join('.'));
 console.log("Result of map4:", map4);
 
+// map 4 (bitna)
+
+inventors.map((name) => {
+  let splitName = inventors.split(' ');
+  return splitName.reduce((total, eachname) => {
+    total += eachname.charAt(0);
+    return total;
+  },'')
+})
+
 //map 5
 let map5 = [];
 map5 = numbers.map((number) => number*100);
@@ -105,6 +129,8 @@ let sort4 = [];
 sort4 = inventors.sort((a,b) => a.length < b.length ? 1 : -1)
 console.log("Result of sort3:", sort4);
 
+
+// REDUCE
 // Reduce 1
 let reduce1 = []
 reduce1 = numbers.reduce((total, num) => total += num);
@@ -123,11 +149,12 @@ reduce3 = inventors.map((name) => name.substring(0,name.indexOf(' '))).reduce((t
 });
 console.log("Result of reduce3:", reduce3);
 
-// reduce3 = inventors.reduce((total, name) => {
-//   total+=name.charAt(0);
-//   return total
-// },'' )
-
+// Reduce 3
+inventors.reduce((total, name) => {
+  let firstName = name.substring(0,name.indexOf(' '));
+  total += firstName;
+  return total
+},'')
 
 // Some / every
 // SE 1
